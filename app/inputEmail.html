@@ -5,8 +5,9 @@
 		<div class ='email-container'
 			 ng-controller="EmailController as ctrl" 
 			 ng-click="ctrl.setInputFocus($event)">
-			<div class="email-container-deeper">
-				<div ng-mouseleave="ctrl.addEmail(ctrl.emailString)">
+			<div class="email-container-deeper"
+				ng-mouseleave="ctrl.addEmail(ctrl.emailString)">
+				<div>
 					<div ng-repeat="email in ctrl.emails track by $index">
 						<div class="{{email.isValid ? 'email-div' : 'email-div invalid'}}">
 							<div class="email-name">{{email.name}}</div>
