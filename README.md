@@ -1,2 +1,3 @@
 # AngularTypescript
-Angular.ts template application
+
+Multiple email input angular directive!!!
