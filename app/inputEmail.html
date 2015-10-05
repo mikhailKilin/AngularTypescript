@@ -1,0 +1,22 @@
+
+		<div ng-controller="EmailController as ctrl" 
+			 ng-click="ctrl.setInputFocus($event)">
+			<div class ='email-container' 
+				  ng-mouseleave="ctrl.addEmail(ctrl.emailString)">
+				<div ng-repeat="email in ctrl.emails track by $index">
+					<div class="{{email.isValid ? 'email-div' : 'email-div invalid'}}">
+						<div class="email-name">{{email.name}}</div>
+						<div ng-click="ctrl.deleteEmailString(email.order)" class="close-button">&#10060</div>
+					</div>
+				</div>
+				<input id="inputFocus"
+						type="text" 
+				   		class="email-string" 
+				   		ng-model="ctrl.emailString" 
+				   		ng-keyup="ctrl.addEmailWithEvent($event)" 
+				   		placeholder="add more people..."
+				   		/>
+			</div>
+			<button ng-click="ctrl.addRandomEmail()">add random email</button>
+			<button ng-click="ctrl.getEmailsCount()">get emails count</button>
+        </div>

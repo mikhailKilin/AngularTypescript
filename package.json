@@ -1,0 +1,12 @@
+{
+	"name":"Angular.ts template application",
+	"author": "Kilin Mikhail",
+	"repository": {
+		"url": "https://github.com/mikhailKilin/AngularTypescript.git",
+		"type": "git"
+	},
+	"devDependencies": {
+		"grunt":"^0.4.5",
+		"grunt-ts":"^5.0.0-beta.5"
+	}
+}

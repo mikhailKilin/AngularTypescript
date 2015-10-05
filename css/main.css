@@ -1,0 +1,58 @@
+
+.email-div{
+	border:1px solid #6699ff;
+	margin: 3px;
+	display: inline-block;
+	position: relative;
+	float: left;
+	padding: 4px;
+	border-radius: 15px;
+	background: #6699ff;
+}
+
+.invalid{
+	background: tomato;
+	border: 1px solid tomato;
+	
+}
+
+.email-string{
+	border: 0px;
+	margin: 4px;
+	padding:4px;
+	display: inline-block;
+	position: relative;
+	float: left;
+	outline: none;
+}
+
+.email-container{
+	width: 400px;
+	height: 300px;
+	border: 1px solid gray;
+	padding: 10px;
+	border-radius: 10px;
+	overflow-x: auto;
+}
+
+.email-name{
+	display: inline-block;
+	float: left;
+}
+
+.email-button{
+	display: inline-block;
+	position: relative;
+	float: left;
+	border:1px solid gray;
+}
+
+.close-button{
+	display: inline-block;
+	font-size: 70%;
+	margin-left: 5px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+
