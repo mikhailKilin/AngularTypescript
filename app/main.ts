@@ -23,7 +23,7 @@ class EmailController implements IController{
     emails: Array<EmailString>;
     emailString:string;
 
-    constructor(private $scope:ng.IScope){
+    constructor(){
         this.emails = new Array<EmailString>();
         this.emailString = "";
     }
@@ -79,7 +79,7 @@ class EmailController implements IController{
     
     addRandomEmail():void{
         var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
         for( var i=0; i < Math.floor(Math.random() * possible.length); i++ ){
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         }
