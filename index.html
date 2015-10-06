@@ -8,8 +8,12 @@
 		<script src="app/out.js"></script>
 	</head>
 	<body ng-app="app">
-		<div class="main-div">
-			<emails-editor></emails-editor>
+		<div class="main-div" ng-controller="EmailController as ctrl" >
+			<emails-editor ctrl="ctrl"></emails-editor>
+			<div class="button-div">
+				<button class="email-button" ng-click="ctrl.addEmails(ctrl.getRandomEmail())">add random email</button>
+				<button class="email-button" ng-click="ctrl.getEmailsCount()">get emails count</button>
+			</div>
 		</div>
 		
 	</body>

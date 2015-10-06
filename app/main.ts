@@ -1,5 +1,7 @@
 /// <reference path="../typings/angularjs/angular.d.ts" />
 /// <reference path="../typings/jquery/jquery.d.ts" />
+/// <reference path="inputEmail.html.ts" />
+
 class EmailString{
     public name:string;
     public order:number;
@@ -14,8 +16,6 @@ class EmailString{
 interface IController{
     addEmails(emails:string[]):void
     getEmails():string[]
-    addEmail(emailString:string):void
-    addEmailWithEvent($event: KeyboardEvent):void
 }
 
 class EmailController implements IController{
@@ -77,13 +77,14 @@ class EmailController implements IController{
         return reg.test(email);
     }
     
-    addRandomEmail():void{
+    getRandomEmail():string[]{
         var text = "";
         var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
         for( var i=0; i < Math.floor(Math.random() * possible.length); i++ ){
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         }
-        this.addEmail(text + "@ya.ru");
+        text += "@ya.ru";
+        return [text];
     }
     
     getEmailsCount():void{
@@ -96,11 +97,14 @@ function emailDirective(): ng.IDirective{
         restrict: "E",
         controller: EmailController,
         controllerAs: 'ctrl',
-        templateUrl: '/app/inputEmail.html'
+        template: inputEmail.html,
+        scope:{
+            ctrl:"="
+        }
     }
 }
 
 // Define the Angular module for our application.
 var app = angular.module("app", []);
 app.directive("emailsEditor", emailDirective);
-app.controller("EmailController", ["$scope", EmailController]);
+app.controller("EmailController",  EmailController);

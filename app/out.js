@@ -1,9 +1,10 @@
 var inputEmail;
 (function (inputEmail) {
-    inputEmail.html = '		<div class="main-title">			<div class="title">Share "Board name" with others</div>		</div>		<div class =\'email-container\'			 ng-controller="EmailController as ctrl" 			 ng-click="ctrl.setInputFocus($event)">			<div class="email-container-deeper"				ng-mouseleave="ctrl.addEmail(ctrl.emailString)">				<div>					<div ng-repeat="email in ctrl.emails track by $index">						<div class="{{email.isValid ? \'email-div\' : \'email-div invalid\'}}">							<div class="email-name">{{email.name}}</div>							<div ng-click="ctrl.deleteEmailString(email.order)" class="close-button">&#10060</div>						</div>					</div>					<input id="inputFocus"							type="text" 				   			class="email-string" 				   			ng-model="ctrl.emailString" 				   			ng-keyup="ctrl.addEmailWithEvent($event)" 				   			placeholder="add more people..."				   			/>				</div>			</div>			<div class="button-div">				<button class="email-button" ng-click="ctrl.addRandomEmail()">add random email</button>				<button class="email-button" ng-click="ctrl.getEmailsCount()">get emails count</button>			</div>        </div>';
+    inputEmail.html = '		<div class="main-title">			<div class="title">Share "Board name" with others</div>		</div>		<div class =\'email-container\'			 ng-click="ctrl.setInputFocus($event)"			 ng-mouseleave="ctrl.addEmail(ctrl.emailString)">			<div ng-repeat="email in ctrl.emails track by $index">				<div class="email-div">					<div class="{{email.isValid ? \'email-name\' : \'email-name invalid\'}}">						<div class="email-under-div">{{email.name}}</div>					</div>					<div ng-click="ctrl.deleteEmailString(email.order)" class="close-button">&#10060</div>				</div>			</div>			<input id="inputFocus"					type="text" 				   	class="email-string" 				   	ng-model="ctrl.emailString" 				   	ng-keyup="ctrl.addEmailWithEvent($event)" 				   	placeholder="add more people..."/>        </div>';
 })(inputEmail || (inputEmail = {}));
 /// <reference path="../typings/angularjs/angular.d.ts" />
 /// <reference path="../typings/jquery/jquery.d.ts" />
+/// <reference path="inputEmail.html.ts" />
 var EmailString = (function () {
     function EmailString(name, order, isValid) {
         this.name = name;
@@ -62,13 +63,14 @@ var EmailController = (function () {
         var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,6})$/;
         return reg.test(email);
     };
-    EmailController.prototype.addRandomEmail = function () {
+    EmailController.prototype.getRandomEmail = function () {
         var text = "";
         var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
         for (var i = 0; i < Math.floor(Math.random() * possible.length); i++) {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         }
-        this.addEmail(text + "@ya.ru");
+        text += "@ya.ru";
+        return [text];
     };
     EmailController.prototype.getEmailsCount = function () {
         alert("Emails count is " + this.emails.length);
@@ -80,12 +82,15 @@ function emailDirective() {
         restrict: "E",
         controller: EmailController,
         controllerAs: 'ctrl',
-        templateUrl: '/app/inputEmail.html'
+        template: inputEmail.html,
+        scope: {
+            ctrl: "="
+        }
     };
 }
 var app = angular.module("app", []);
 app.directive("emailsEditor", emailDirective);
-app.controller("EmailController", ["$scope", EmailController]);
+app.controller("EmailController", EmailController);
 /// <reference path="inputEmail.html.ts" />
 /// <reference path="main.ts" />
 //# sourceMappingURL=out.js.map
