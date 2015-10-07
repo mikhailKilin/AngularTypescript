@@ -8,11 +8,14 @@
 		<script src="app/out.js"></script>
 	</head>
 	<body ng-app="app">
+		<div class="main-title">
+			<div class="title">Share "Board name" with others</div>
+		</div>
 		<div class="main-div" ng-controller="EmailController as ctrl" >
 			<emails-editor ctrl="ctrl"></emails-editor>
 			<div class="button-div">
-				<button class="email-button" ng-click="ctrl.addEmails(ctrl.getRandomEmail())">add random email</button>
-				<button class="email-button" ng-click="ctrl.getEmailsCount()">get emails count</button>
+				<button class="email-button" ng-click="ctrl.addEmails(ctrl.getRandomEmail())">Add email</button>
+				<button class="email-button" ng-click="ctrl.getEmailsCount()">Get emails count</button>
 			</div>
 		</div>
 		
